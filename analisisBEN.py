@@ -33,7 +33,7 @@ class InstancesMhs:
         self.bestTime = []
 
 # Listas de metaheuristicas a implementar
-mhsList = ['WOA']
+mhsList = ['FLO']
 # Lista de colores de grafico por metaheuristica
 color = ['r','g']
 
@@ -43,7 +43,7 @@ mhs = {name: InstancesMhs() for name in mhsList}
 bd = BD()
 
 instancias = bd.obtenerInstancias(f'''
-                                  "F9"
+                                  "F3"
                                   ''')
 
 for instancia in instancias:
@@ -98,6 +98,16 @@ for instancia in instancias:
             ax.set_title(f'Convergence {mh} \n {problem} run {corrida}')
             ax.set_ylabel("Fitness")
             ax.set_xlabel("Iteration")
+            
+            ax.set_xscale('log')
+
+            # Definir los ticks del eje x de 10^0 a 10^3
+            ax.set_xticks([10**0, 10**1, 10**2, 10**3])
+            ax.get_xaxis().set_major_formatter(plt.ScalarFormatter())
+
+            # Limitar el valor máximo del eje x
+            ax.set_xlim([10**0, 10**3])
+
             plt.savefig(f'{dirResultado}/Graficos/Coverange_{mh}_{problem}_{corrida}.pdf')
             plt.close('all')
             print(f'Grafico de covergencia realizado {mh} {problem} ')

@@ -3,8 +3,8 @@ import json
 
 bd = BD()
 
-ben = False
-scp = True
+ben = True
+scp = False
 # mhs = ['EOO','FOX','GOA','GWO','HBA','PSA','PSO','RSA','SCA','SHO','TDA','WOA']
 mhs = ['FLO']
 
@@ -23,7 +23,7 @@ DS_actions = [
 
 if ben:
     # funciones = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','F14','F16','F17','F18','F19','F20','F15','F21','F22','F23']
-    funciones = ['F1','F2','F3','F4','F5','F6','F7']
+    funciones = ['F8','F9','F10','F11','F12','F13','F14','F16','F17','F18','F19','F20','F15','F21','F22','F23']
 
     for funcion in funciones:
         # poblar ejecuciones Benchmark
@@ -31,7 +31,7 @@ if ben:
         # Para funciones F1-F13
         if funcion in ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13']:
             # dimensiones = [30, 100, 500, 1000]
-            dimensiones = [30]
+            dimensiones = [100]
         # Para funciones F14, F16, F17, F18
         if funcion in ['F14','F16','F17','F18']:
             dimensiones = [2]
@@ -44,9 +44,9 @@ if ben:
         # Para funciones F15, F21, F22, F23
         if funcion in ['F15','F21','F22','F23']:
             dimensiones = [4]
-        iteraciones = 1000
-        experimentos = 3
-        poblacion = 10
+        iteraciones = 500
+        experimentos = 2
+        poblacion = 50
         for instancia in instancias:
             for dim in dimensiones:
                 for mh in mhs:
@@ -66,9 +66,9 @@ if scp:
     instancias = bd.obtenerInstancias(f'''
                                       "scp41"
                                       ''')
-    iteraciones = 100
-    experimentos = 1
-    poblacion = 10
+    iteraciones = 500
+    experimentos = 2
+    poblacion = 50
     for instancia in instancias:
         for mh in mhs:
             binarizaciones = ['V3-ELIT']

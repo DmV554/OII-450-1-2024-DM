@@ -135,7 +135,7 @@ def solverB(id, mh, maxIter, pop, function, lb, ub, dim):
         if mh == 'SHO':
             population = iterarSHO(maxIter, iter, dim, population.tolist(), best.tolist(),fo, 'MIN')
         if mh == 'FLO':  # Aquí se aplica la metaheurística FLO
-            population = iterarFLO(maxIter, iter, dim, population, fitness, best)
+            population = iterarFLO(maxIter, iter, dim, population, fitness, best, fo, 'MIN', lb[0], ub[0])
 
         # calculo de factibilidad de cada individuo y calculo del fitness inicial
         for i in range(population.__len__()):

@@ -130,7 +130,8 @@ def solverSCP(id, mh, maxIter, pop, instances, DS, repairType, param):
         if mh == 'SHO':
             population = iterarSHO(maxIter, iter, instance.getColumns(), population.tolist(), best.tolist(),fo, 'MIN')
         if mh == 'FLO':  # Aquí se aplica la metaheurística FLO
-            population = iterarFLO(maxIter, iter, instance.getColumns(), population, fitness, best)
+            population = iterarFLO(maxIter, iter, instance.getColumns(), population, fitness, best, fo, 'MIN', 0, 1)
+
         
         # Binarizo, calculo de factibilidad de cada individuo y calculo del fitness
         for i in range(population.__len__()):
