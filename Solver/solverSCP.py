@@ -2,7 +2,7 @@ import numpy as np
 import os
 import time
 from Problem.SCP.problem import SCP
-from Metaheuristics.imports import iterarGWO,iterarSCA,iterarWOA,iterarPSA,iterarGA
+from Metaheuristics.imports import iterarGWO,iterarSCA,iterarWOA,iterarPSA,iterarGA, iterarFLO
 from Metaheuristics.imports import iterarPSO,iterarFOX,iterarEOO,iterarRSA,iterarGOA,iterarHBA,iterarTDO,iterarSHO
 from Diversity.imports import diversidadHussain,porcentajesXLPXPT
 from Discretization import discretization as b
@@ -129,6 +129,8 @@ def solverSCP(id, mh, maxIter, pop, instances, DS, repairType, param):
             population = iterarTDO(maxIter, iter, instance.getColumns(), population.tolist(), fitness.tolist(),fo, 'MIN')
         if mh == 'SHO':
             population = iterarSHO(maxIter, iter, instance.getColumns(), population.tolist(), best.tolist(),fo, 'MIN')
+        if mh == 'FLO':  # Aquí se aplica la metaheurística FLO
+            population = iterarFLO(maxIter, iter, instance.getColumns(), population, fitness, best)
         
         # Binarizo, calculo de factibilidad de cada individuo y calculo del fitness
         for i in range(population.__len__()):

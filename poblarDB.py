@@ -6,7 +6,7 @@ bd = BD()
 ben = False
 scp = True
 # mhs = ['EOO','FOX','GOA','GWO','HBA','PSA','PSO','RSA','SCA','SHO','TDA','WOA']
-mhs = ['WOA']
+mhs = ['FLO']
 
 cantidad = 0
 
@@ -23,7 +23,8 @@ DS_actions = [
 
 if ben:
     # funciones = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13','F14','F16','F17','F18','F19','F20','F15','F21','F22','F23']
-    funciones = ['F8']
+    funciones = ['F1','F2','F3','F4','F5','F6','F7']
+
     for funcion in funciones:
         # poblar ejecuciones Benchmark
         instancias = bd.obtenerInstancias(f'''"{funcion}"''')

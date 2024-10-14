@@ -2,7 +2,7 @@ import time
 import numpy as np
 import os
 from Diversity.imports import diversidadHussain,porcentajesXLPXPT
-from Metaheuristics.imports import iterarGWO,iterarPSA,iterarSCA,iterarWOA
+from Metaheuristics.imports import iterarGWO,iterarPSA,iterarSCA,iterarWOA, iterarFLO
 from Metaheuristics.imports import iterarPSO,iterarFOX,iterarEOO,iterarRSA,iterarGOA,iterarHBA,iterarTDO,iterarSHO
 from Problem.Benchmark.Problem import fitness as f
 from util import util
@@ -134,6 +134,8 @@ def solverB(id, mh, maxIter, pop, function, lb, ub, dim):
             population = iterarTDO(maxIter, iter, dim, population.tolist(), fitness.tolist(),fo, 'MIN')
         if mh == 'SHO':
             population = iterarSHO(maxIter, iter, dim, population.tolist(), best.tolist(),fo, 'MIN')
+        if mh == 'FLO':  # Aquí se aplica la metaheurística FLO
+            population = iterarFLO(maxIter, iter, dim, population, fitness, best)
 
         # calculo de factibilidad de cada individuo y calculo del fitness inicial
         for i in range(population.__len__()):
